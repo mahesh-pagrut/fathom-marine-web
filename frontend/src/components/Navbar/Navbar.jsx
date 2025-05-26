@@ -1,29 +1,25 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-// import { AppContext } from '../../context/AppContext';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
-  // const { searchTerm, setSearchTerm } = useContext(AppContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <Link to="/" className="brand">Fanthom Marine Web</Link>
+        <Link to="/" className="brand">Fanthom Marine</Link>
       </div>
-      {/* <div className="navbar-center">
-        <input
-          type="text"
-          placeholder="Search marine life..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div> */}
-      <div className="navbar-right">
-        <Link to="/">Dashboard</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact  Us</Link>
+
+      <div className={`navbar-right ${isMenuOpen ? 'open' : ''}`}>
+        <Link to="/" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
+        <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+        <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
+      </div>
+
+      <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        {isMenuOpen ? <FaTimes /> : <FaBars />}
       </div>
     </nav>
   );
