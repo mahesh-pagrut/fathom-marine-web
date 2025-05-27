@@ -1,7 +1,7 @@
 .header {
   position: relative;
-  width: 101%;
-  height: 100vh; /* Full screen height */
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
   padding-top: 100px;
 }
@@ -10,7 +10,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   top: 0;
   left: 0;
   z-index: 0;
@@ -32,12 +32,13 @@
 .header-contents h2 {
   color: white;
   font-weight: 500;
-  font-size: max(4.1vw, 22px);
+  font-size: clamp(24px, 5vw, 50px); /* Responsive font size */
 }
 
 .header-contents p {
   color: white;
-  font-size: 1vw;
+  font-size: clamp(14px, 1.2vw, 18px);
+  max-width: 90%;
 }
 
 .header-contents button {
@@ -46,7 +47,7 @@
   font-weight: 500;
   padding: 1vw 2.3vw;
   background-color: white;
-  font-size: max(1vw, 22px);
+  font-size: clamp(14px, 1.2vw, 22px);
   border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -56,26 +57,33 @@
   background-color: #f0f0f0;
 }
 
-/* Responsiveness */
+/* Medium screens */
 @media (max-width: 1050px) {
   .header-contents {
-    max-width: 45%;
+    max-width: 60%;
   }
 }
 
+/* Small screens (mobiles) */
 @media (max-width: 750px) {
   .header {
-    height: 60vh; 
+    height: 60vh;
   }
 
   .header-bg {
     width: 100%;
-    height: 100%; 
+    height: 100%;
   }
 
   .header-contents {
-    max-width:85%;
-    bottom: 10%; 
+    max-width: 90%;
+    bottom: 15%;
+    left: 5%;
+    gap: 12px;
+  }
+
+  .header-contents h2 {
+    font-size: 24px;
   }
 
   .header-contents p {
@@ -83,11 +91,10 @@
   }
 
   .header-contents button {
-    padding: 5px;
-    font-size: 12px;
+    padding: 8px 16px;
+    font-size: 14px;
   }
 }
-
 
 /* Fade-in animation */
 @keyframes fadeIn {
